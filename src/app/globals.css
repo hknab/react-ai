@@ -35,7 +35,7 @@ html {
     --chart-3: 60 4.8% 95.9%;
     --chart-4: 60 4.8% 98.9%;
     --chart-5: 47.9 98.8% 53.1%;
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
   .dark {
     --background: 20 14.3% 4.1%;
