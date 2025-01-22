@@ -1,67 +1,53 @@
 "use client";
-import { Button, Card, CardContent, Input } from "@/components/ui";
+import { Button, Input } from "@/components/ui";
 import assert from "assert";
-import { startTransition } from "react";
-import { createChat } from "./actions";
+import { SendHorizontal } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { FormEventHandler, startTransition, useState } from "react";
+import { createChatAction } from "./actions";
 
 const Page = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleForm: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const { prompt } = Object.fromEntries(formData.entries());
+    setIsLoading(true);
+    startTransition(async () => {
+      assert.ok(typeof prompt === "string");
+      const { chatId } = await createChatAction(prompt);
+      router.push(`/chats/${chatId}`);
+    });
+  };
+
   return (
     <div className="w-full min-h-screen grid place-items-center">
-      <div className="mx-auto max-w-3xl px-4 py-8">
+      <div className="mx-auto  px-4 py-8 w-full">
         <h1 className="mb-8 text-center text-4xl font-thin tracking-tight">
           What can I help you ship?
         </h1>
-        <Card className="bg-background">
-          <CardContent className="p-3 ">
-            <form
-              className="flex items-center gap-2"
-              action={async (formData) => {
-                startTransition(async () => {
-                  const { prompt } = Object.fromEntries(formData);
-
-                  assert.ok(typeof prompt === "string");
-
-                  const { chatId, lastMessageId } = await createChat(prompt);
-                  console.log({ chatId, lastMessageId });
-                  /*        const { streamPromise } =
-                    await getNextCompletionStreamPromise(lastMessageId);
-                  startTransition(() => {
-                    setStreamPromise(streamPromise);
-                    router.push(`/chats/${chatId}`);
-                  }); */
-                });
-              }}
-            >
-              <div className="relative flex-1">
-                <Input
-                  name="prompt"
-                  placeholder="What do you want to build?"
-                  className="pr-20"
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" && !event.shiftKey) {
-                      event.preventDefault();
-                      const target = event.target;
-                      if (!(target instanceof HTMLTextAreaElement)) return;
-                      target.closest("form")?.requestSubmit();
-                    }
-                  }}
-                />
-              </div>
-              <Button type="submit">Generate</Button>
-            </form>
-          </CardContent>
-        </Card>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Button variant="outline" size="sm">
-            Generate a sticky header →
+        <form
+          className="flex items-stretch gap-2 min-w-72 h-full w-full  max-w-[720px] mx-auto"
+          onSubmit={handleForm}
+        >
+          <div className="relative flex-1 w-full ">
+            <Input
+              name="prompt"
+              placeholder="What do you want to build?"
+              className="w-full h-full"
+            />
+          </div>
+          <Button
+            type="submit"
+            size="icon"
+            className="h-12 w-12"
+            disabled={isLoading}
+          >
+            <SendHorizontal className="text-4xl" />
           </Button>
-          <Button variant="outline" size="sm">
-            How can I structure LLM output? →
-          </Button>
-          <Button variant="outline" size="sm">
-            Write code to implement a min heap →
-          </Button>
-        </div>
+        </form>
       </div>
     </div>
   );

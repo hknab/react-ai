@@ -1,12 +1,9 @@
-"use client";
 import { Badge, Button } from "@/components/ui";
 import { ArrowRight } from "lucide-react";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 
 export const HeroSection = () => {
-  const { theme } = useTheme();
   return (
     <section className="container w-full mx-auto" id="hero">
       <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-20 md:py-32">
@@ -61,7 +58,7 @@ export const HeroSection = () => {
             width={1200}
             height={1200}
             className="w-full md:w-[1200px] mx-auto rounded-lg relative rouded-lg leading-none flex items-center border border-t-2 border-secondary  border-t-primary/30"
-            src={theme === "light" ? "/hero-light.webp" : "/hero-dark.webp"}
+            src="/screenshot.png"
             alt="dashboard"
           />
 

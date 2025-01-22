@@ -5,9 +5,11 @@ import { getSystemPrompt } from "@/lib/get-prompt";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Together from "together-ai";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
 import { z } from "zod";
 
-export async function createChat(prompt: string) {
+export async function createChatAction(prompt: string) {
   const chat = await prisma.chat.create({
     data: {
       prompt,
@@ -119,11 +121,15 @@ export async function createChat(prompt: string) {
   };
 }
 
-export async function createMessage(
-  chatId: string,
-  text: string,
-  role: "assistant" | "user"
-) {
+export async function createMessage({
+  chatId,
+  role,
+  text,
+}: {
+  chatId: string;
+  text: string;
+  role: "assistant" | "user";
+}) {
   const chat = await prisma.chat.findUnique({
     where: { id: chatId },
     include: { messages: true },
@@ -146,10 +152,7 @@ export async function createMessage(
   return newMessage;
 }
 
-export async function getNextCompletionStreamPromise(
-  messageId: string,
-  model: string
-) {
+export async function chatCompletion(messageId: string) {
   const message = await prisma.message.findUnique({ where: { id: messageId } });
   if (!message) notFound();
 
@@ -157,6 +160,7 @@ export async function getNextCompletionStreamPromise(
     where: { chatId: message.chatId, position: { lte: message.position } },
     orderBy: { position: "asc" },
   });
+  if (messagesRes[messagesRes.length - 1].role === "assistant") return;
 
   let messages = z
     .array(
@@ -167,8 +171,8 @@ export async function getNextCompletionStreamPromise(
     )
     .parse(messagesRes);
 
-  if (messages.length > 10) {
-    messages = [messages[0], messages[1], messages[2], ...messages.slice(-7)];
+  if (messages.length > 4) {
+    messages = [messages[0], messages[1], ...messages.slice(-2)];
   }
 
   const options: ConstructorParameters<typeof Together>[0] = {};
@@ -183,17 +187,15 @@ export async function getNextCompletionStreamPromise(
   }
 
   const together = new Together(options);
-  return {
-    streamPromise: new Promise<ReadableStream>(async (resolve) => {
-      const res = await together.chat.completions.create({
-        model,
-        messages: messages.map((m) => ({ role: m.role, content: m.content })),
-        stream: true,
-        temperature: 0.2,
-        max_tokens: 9000,
-      });
 
-      resolve(res.toReadableStream());
-    }),
-  };
+  const res = await together.chat.completions.create({
+    model: MODELS["meta-llama/Llama-3.3-70B-Instruct-Turbo-Free"],
+    messages: messages.map((m) => ({
+      role: m.role,
+      content: m.content,
+    })),
+    stream: true,
+    temperature: 0.2,
+  });
+  return res;
 }
