@@ -18,18 +18,7 @@ export async function createChatAction(prompt: string) {
     },
   });
 
-  const options: ConstructorParameters<typeof Together>[0] = {};
-  if (process.env.HELICONE_API_KEY) {
-    options.baseURL = "https://together.helicone.ai/v1";
-    options.defaultHeaders = {
-      "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
-      "Helicone-Property-appname": "LlamaCoder",
-      "Helicone-Session-Id": chat.id,
-      "Helicone-Session-Name": "LlamaCoder Chat",
-    };
-  }
-
-  const together = new Together(options);
+  const together = new Together();
 
   async function fetchTitle() {
     const responseForChatTitle = await together.chat.completions.create({
@@ -175,18 +164,7 @@ export async function chatCompletion(messageId: string) {
     messages = [messages[0], messages[1], ...messages.slice(-2)];
   }
 
-  const options: ConstructorParameters<typeof Together>[0] = {};
-  if (process.env.HELICONE_API_KEY) {
-    options.baseURL = "https://together.helicone.ai/v1";
-    options.defaultHeaders = {
-      "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
-      "Helicone-Property-appname": "LlamaCoder",
-      "Helicone-Session-Id": message.chatId,
-      "Helicone-Session-Name": "LlamaCoder Chat",
-    };
-  }
-
-  const together = new Together(options);
+  const together = new Together();
 
   const res = await together.chat.completions.create({
     model: MODELS["meta-llama/Llama-3.3-70B-Instruct-Turbo-Free"],

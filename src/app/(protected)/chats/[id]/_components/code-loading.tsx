@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Sparkles } from "lucide-react";
+import { Code } from "lucide-react";
 
 export function CodeLoading() {
   return (
@@ -16,18 +16,6 @@ export function CodeLoading() {
         }}
       >
         <Code className="w-24 h-24 text-white" />
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center"
-          initial={{ scale: 0 }}
-          animate={{ scale: [0, 1, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        >
-          <Sparkles className="w-8 h-8 text-yellow-400" />
-        </motion.div>
       </motion.div>
       <motion.h1
         className="mt-8 text-3xl font-bold"

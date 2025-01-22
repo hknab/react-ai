@@ -1,5 +1,6 @@
 import { Badge, Button } from "@/components/ui";
-import { ArrowRight } from "lucide-react";
+import { SOCIAL } from "@/constants/links";
+import { ArrowRight, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,10 +34,12 @@ export const HeroSection = () => {
             {`An open source Claude Artifacts – generate react components with one prompt. Powered by Llama 3 on Together.ai.`}
           </p>
 
-          <div className="space-y-4 md:space-y-0 md:space-x-4">
-            <Button className="w-5/6 md:w-1/4 font-bold group/arrow">
-              GET STARTED
-              <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
+          <div className=" flex flex-col items-center justify-center md:flex-row gap-4">
+            <Button className="w-5/6 md:w-1/4 font-bold group/arrow" asChild>
+              <Link href="/chats">
+                GET STARTED
+                <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
+              </Link>
             </Button>
 
             <Button
@@ -44,8 +47,8 @@ export const HeroSection = () => {
               variant="secondary"
               className="w-5/6 md:w-1/4 font-bold"
             >
-              <Link href="#" target="_blank">
-                Github Repository
+              <Link href={SOCIAL.GITHUB_REPO} target="_blank">
+                <Github /> Github Repository
               </Link>
             </Button>
           </div>

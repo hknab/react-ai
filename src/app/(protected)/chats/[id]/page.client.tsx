@@ -120,9 +120,9 @@ export default function PageClient({ chat }: { chat: Chat }) {
         </div>
 
         <Button
-          variant="ghost"
+          variant="outline"
           size="icon"
-          className={`hidden fixed top-4 right-4 z-50 ${
+          className={`hidden fixed top-1 right-1 z-50 md:flex ${
             isResultVisible && "flex"
           }`}
           onClick={() => setIsResultVisible(false)}

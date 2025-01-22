@@ -42,49 +42,6 @@ export const FooterSection = () => {
               </Link>
             </div>
           </div>
-
-          <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Platforms</h3>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Help</h3>
-            <div>
-              <Link href="#contact" className="opacity-60 hover:opacity-100">
-                Contact Us
-              </Link>
-            </div>
-
-            <div>
-              <Link href="#faq" className="opacity-60 hover:opacity-100">
-                FAQ
-              </Link>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Socials</h3>
-            <div>
-              <Link href="" className="opacity-60 hover:opacity-100">
-                Twitch
-              </Link>
-            </div>
-
-            <div>
-              <Link
-                href={SOCIAL.DISCORD}
-                className="opacity-60 hover:opacity-100"
-              >
-                Discord
-              </Link>
-            </div>
-
-            <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Dribbble
-              </Link>
-            </div>
-          </div>
         </div>
 
         <Separator className="my-6" />

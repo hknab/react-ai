@@ -14,6 +14,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui";
+import { SOCIAL } from "@/constants/links";
 import { Github, Menu } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -31,14 +32,6 @@ const routeList: RouteProps[] = [
   {
     href: "#about",
     label: "About",
-  },
-  {
-    href: "#contact",
-    label: "Contact",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
   },
 ];
 
@@ -111,7 +104,11 @@ export const Navbar = () => {
         <ToggleTheme />
 
         <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
-          <Link aria-label="View on GitHub" href="" target="_blank">
+          <Link
+            aria-label="View on GitHub"
+            href={SOCIAL.GITHUB_REPO}
+            target="_blank"
+          >
             <Github className="size-5" />
           </Link>
         </Button>

@@ -7,8 +7,8 @@ const PublicLayout: FC<PropsWithChildren> = ({ children }) => {
     <>
       <Navbar />
       <div className="w-full px-4">
-        {" "}
-        {children} <FooterSection />
+        {children}
+        <FooterSection />
       </div>
     </>
   );

@@ -14,7 +14,6 @@ export const Messages: FC<{ isStreaming: boolean; messages: TMessage[] }> = ({
   isStreaming,
   messages,
 }) => {
-  console.log({ messages });
   return (
     <>
       {messages
