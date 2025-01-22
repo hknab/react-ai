@@ -24,13 +24,12 @@ model GeneratedApp {
 }
 
 model Chat {
-  id                String    @id @default(nanoid(16))
-  model             String
-  prompt            String
-  title             String
-  llamaCoderVersion String    @default("v2")
-  messages          Message[]
-  createdAt         DateTime  @default(now())
+  id        String    @id @default(nanoid(16))
+  model     String
+  prompt    String
+  title     String
+  messages  Message[]
+  createdAt DateTime  @default(now())
 }
 
 model Message {
