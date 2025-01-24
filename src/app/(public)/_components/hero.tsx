@@ -31,7 +31,8 @@ export const HeroSection = () => {
           </div>
 
           <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground">
-            {`An open source Claude Artifacts – generate react components with one prompt. Powered by Llama 3 on Together.ai.`}
+            Generate React components with a single prompt – open-source and
+            powered by Llama 3 on Together.ai.
           </p>
 
           <div className=" flex flex-col items-center justify-center md:flex-row gap-4">
