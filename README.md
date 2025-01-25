@@ -27,7 +27,6 @@
 ##  Table of Contents
 
 - [ Overview](#-overview)
-- [ Features](#-features)
 - [ Project Structure](#-project-structure)
   - [ Project Index](#-project-index)
 - [ Getting Started](#-getting-started)
@@ -44,15 +43,10 @@
 
 ##  Overview
 
-<code>❯ REPLACE-ME</code>
+An AI-powered React Component Generator that enables you to create React components effortlessly using natural language prompts. Powered by the advanced LLama 3 LLM, this tool simplifies the development process by generating clean, functional, and customizable React code based on your input.
 
 ---
 
-##  Features
-
-<code>❯ REPLACE-ME</code>
-
----
 
 ##  Project Structure
 
