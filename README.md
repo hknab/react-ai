@@ -1,8 +1,6 @@
 <div align="left" style="position: relative;">
 <h1>REACT-AI</h1>
-<p align="left">
-	<em><code>❯ REPLACE-ME</code></em>
-</p>
+
 <p align="left">
 	<img src="https://img.shields.io/github/license/hknab/react-ai?style=flat&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
 	<img src="https://img.shields.io/github/last-commit/hknab/react-ai?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
@@ -541,8 +539,8 @@ An AI-powered React Component Generator that enables you to create React compone
 
 Before getting started with react-ai, ensure your runtime environment meets the following requirements:
 
-- **Programming Language:** TypeScript
-- **Package Manager:** Npm
+- **NodeJS LTS**
+- **NPM package manager**
 
 
 ###  Installation
