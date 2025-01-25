@@ -24,23 +24,6 @@
 </div>
 <br clear="right">
 
-##  Table of Contents
-
-- [ Overview](#-overview)
-- [ Project Structure](#-project-structure)
-  - [ Project Index](#-project-index)
-- [ Getting Started](#-getting-started)
-  - [ Prerequisites](#-prerequisites)
-  - [ Installation](#-installation)
-  - [ Usage](#-usage)
-  - [ Testing](#-testing)
-- [ Project Roadmap](#-project-roadmap)
-- [ Contributing](#-contributing)
-- [ License](#-license)
-- [ Acknowledgments](#-acknowledgments)
-
----
-
 ##  Overview
 
 An AI-powered React Component Generator that enables you to create React components effortlessly using natural language prompts. Powered by the advanced LLama 3 LLM, this tool simplifies the development process by generating clean, functional, and customizable React code based on your input.
