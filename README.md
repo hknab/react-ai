@@ -586,6 +586,6 @@ Run react-ai using the following command:
 ---
 ##  Project Roadmap
 
-- [X] **`Task 1`**: <strike>Implement response streaming</strike>
+- [ ] **`Task 1`**: <strike>Implement response streaming</strike>
 
 ---
