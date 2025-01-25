@@ -583,7 +583,7 @@ Run react-ai using the following command:
 
 ---
 ##  Project Roadmap
-
-- [ ] **`Task 1`**: <strike>Implement response streaming</strike>
+- [ ] **`Task 1`**: <strike>Add Loading State on /chats prompt input </strike>
+- [ ] **`Task 2`**: <strike>Implement response streaming</strike>
 
 ---
