@@ -572,11 +572,11 @@ Install react-ai using one of the following methods:
 
 
 ###  Usage
-Run react-ai using the following command:
+Run react-ai dev using the following command:
 **Using `npm`** &nbsp; [<img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />](https://www.npmjs.com/)
 
 ```sh
-❯ npm run start
+❯ npm run dev
 ```
 
 
